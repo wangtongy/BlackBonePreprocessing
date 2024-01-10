@@ -1,7 +1,7 @@
 function Head_mask(name_in, name_mk)
 
 fprintf('\n %s \n',name_in);
-levelset = sprintf('/data/anlab/TongyaoW/BlackBoneProject/Preprocessing/bin/levelset %s %s -b', name_in, name_mk);
+levelset = sprintf('/data/anlab/TongyaoW/BlackBoneProject/Preprocessing/bin/levelset %s %s', name_in, name_mk);
 system(levelset);
 clear levelset;
 
