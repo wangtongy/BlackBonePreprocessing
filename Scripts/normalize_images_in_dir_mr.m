@@ -3,7 +3,7 @@ function normalize_images_in_dir_mr(name_input_dir, name_output_dir, names_all,n
         for i=1:length(names_all),
                nnn = names_all{i};
                
-               name_in = sprintf('%s/%s_nonorm_%s.nii.gz', name_input_dir, nnn, name_ext);
+               name_in = sprintf('%s/%s_correction_MR.nii.gz', name_input_dir, nnn);
                name_mk = sprintf('%s/%s_r1_mk.nii.gz', name_input_dir, nnn);
                name_out = sprintf('%s/%s_%s.nii.gz', name_output_dir, nnn, name_ext);
                if ~exist(name_mk,'file')

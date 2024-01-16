@@ -1,10 +1,10 @@
-function normalize_images_in_dir_ct(name_input_dir, name_output_dir, names_all,name_ext)
+function normalize_images_in_dir_ct(name_input_dir, name_output_dir, names_all,name_ext,txtname)
 
 
-    [mean_group,std_group] = calculate_mean_std_group(name_input_dir,names_all,'edge_ct');
+    [mean_group,std_group] = calculate_mean_std_group(name_input_dir,names_all,'nonorm_ct_low');
 % write mean and std out;
     T = table(mean_group, std_group,'VariableNames',{'mean_group','std_group'});
-    nametable = sprintf('%s/mean_std_ct_edgegroup2.txt',name_output_dir);
+    nametable = sprintf('%s/mean_std_ct_%s.txt',name_output_dir,txtname);
     writetable(T,nametable);
 
 nums_all = length(names_all);
@@ -13,7 +13,7 @@ nums_all = length(names_all);
     parfor i=1:nums_all,
        nnn = names_all{i};
        
-       name_in = sprintf('%s/%s_edge_%s.nii.gz', name_input_dir, nnn, name_ext);
+       name_in = sprintf('%s/%s_nonorm_%s_low.nii.gz', name_input_dir, nnn, name_ext);
        name_mk = sprintf('%s/%s_ct_mk.nii.gz', name_input_dir, nnn);
        name_out = sprintf('%s/%s_%s.nii.gz', name_output_dir, nnn, name_ext);
        if ~exist(name_mk,'file')
