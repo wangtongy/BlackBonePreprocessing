@@ -3,9 +3,9 @@ function [meanv, stdv] = calculate_mean_std_group(folder, subject_list,ext)
 
    nums_all = length(subject_list);
    
-   val = cell(1,nums_all);
+   val = [];
    
-   parfor i=1:nums_all     
+   for i=1:nums_all     
       name_in = sprintf('%s/%s_%s.nii.gz',folder,subject_list{i},ext);
       name_mk = sprintf('%s/%s_ct_mk.nii.gz',folder,subject_list{i});
       name_in_tmp = name_in;
@@ -32,15 +32,11 @@ function [meanv, stdv] = calculate_mean_std_group(folder, subject_list,ext)
       val_tmp = im(I);
       
       
-      val{i} = val_tmp;
+      val = [val' val_tmp']';
+      
+      fprintf('complete %d',i);
+   end 
 
-     
-   end;
-   comb_val = [];
-   for i = 1:nums_all
-       tmp_val = val{i};
-       comb_val = [comb_val' tmp_val'];
-   end
    meanv = mean(val);
    stdv = std(val);
    

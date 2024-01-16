@@ -4,8 +4,8 @@ if ~exist(destination,'file')
 end
 for i = 1:length(subject_list)
  
-        mk = sprintf('%s_nonorm_ct.nii.gz',subject_list{i});
-    %     filesr1 = sprintf('%s/%s_r1.nii.gz',folder_in,subject_list{i});
+        mk = sprintf('%s_ct.nii.gz',subject_list{i});
+        filesr1 = sprintf('%s/%s_r1.nii.gz',folder_in,subject_list{i});
         filesmk = sprintf('%s/%s_nonorm_ct.nii.gz',folder_in,subject_list{i});
     %     copyfile(filesr1,destination);
 %         new_name = sprintf('%s_nonorm_ct.nii.gz',subject_list{i});

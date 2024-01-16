@@ -22,7 +22,7 @@ for i = 1:length(subject_number)
             folder_name = sprintf('%s-%s_CT_3Ddataset',prefix, subject_number{i});
             Top_folder = fullfile(folderT1Dcm,folder_name);
     elseif pointer == 1 %'mr'
-        folder_name = sprintf('%s-0%s',prefix,subject_number{i});
+        folder_name = sprintf('%s-%s',prefix,subject_number{i});
         Top_folder = fullfile(folderT1Dcm,folder_name);
     end
     disp(Top_folder);

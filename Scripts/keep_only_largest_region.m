@@ -1,9 +1,10 @@
 
-function  keep_only_largest_region(folder, subject_list,ext)
-    poolobj = parpool(5);
+function  keep_only_largest_region(folder,out, subject_list,ext)
+ 
     parfor i = 1:length(subject_list)
         fprintf('\n%s',subject_list{i});
         mk_in_name = sprintf('%s/%s_%s_mk.nii.gz',folder,subject_list{i},ext);
+        mk_out_name = sprintf('%s/%s_%s_mk.nii.gz',out,subject_list{i},ext);
         if ~exist(mk_in_name,'file')
             continue
         end
@@ -41,10 +42,10 @@ function  keep_only_largest_region(folder, subject_list,ext)
             mk_out(I) = 0;
         
             
-            niftigzwrite(mk_out,mk_in_name,info);
+            niftigzwrite(mk_out,mk_out_name,info);
             
         end
     end
-    delete(poolobj);
+
 end
 

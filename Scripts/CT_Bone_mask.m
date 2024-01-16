@@ -6,11 +6,10 @@ function CT_Bone_mask(folder, subject_list)
 % CT with no holder in the background: xxx_nonorm_ct.nii.gz
 %%%%%%%%%%%%%%%%
 addpath('/data/anlab/TongyaoW/BlackBoneProject/Preprocessing/Utility');
-poolobj = parpool(7);
 parfor i = 1:length(subject_list)
     tic
     in = sprintf('%s/%s_nonorm_ct.nii.gz',folder,subject_list{i});
-    hd_mk = sprintf('%s/%s_mk.nii.gz',folder,subject_list{i});
+    hd_mk = sprintf('%s/%s_ct_mk.nii.gz',folder,subject_list{i});
     hd_bone = sprintf('%s/%s_seg_mk.nii.gz',folder,subject_list{i});
     if ~exist(in,'file')|~exist(hd_mk,'file')
         continue
@@ -34,5 +33,4 @@ parfor i = 1:length(subject_list)
     niftigzwrite(weight,weight_out,info);
     toc
 end
-delete(poolobj);
 end

@@ -1,8 +1,8 @@
 function edge_filtering(folder,out,subject_list,ext)
-     poolobj = parpool(15);
+
     parfor i=1:length(subject_list)
   
-        name_in = sprintf('%s/%s_%s.nii.gz',folder,subject_list{i},ext);
+        name_in = sprintf('%s/%s_nonorm_%s.nii.gz',folder,subject_list{i},ext);
         name_out= sprintf('%s/%s_edge_%s.nii.gz',out,subject_list{i},ext);
         if exist(name_out,'file')
             continue
@@ -31,5 +31,5 @@ function edge_filtering(folder,out,subject_list,ext)
             continue;
         end
     end
-     delete(poolobj);
+
 end

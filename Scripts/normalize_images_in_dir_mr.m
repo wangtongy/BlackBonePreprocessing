@@ -1,6 +1,6 @@
 function normalize_images_in_dir_mr(name_input_dir, name_output_dir, names_all,name_ext,param)
 
-        parfor i=1:length(names_all),
+        for i=1:length(names_all),
                nnn = names_all{i};
                
                name_in = sprintf('%s/%s_nonorm_%s.nii.gz', name_input_dir, nnn, name_ext);
@@ -18,7 +18,7 @@ function normalize_images_in_dir_mr(name_input_dir, name_output_dir, names_all,n
                    continue
                end
                nii = niftiread(name_in);
-               mk = niftiread(name_mk); 
+               mk = single(niftiread(name_mk)); 
               
         
                im_out = nii.*mk; %make the background as 0;
@@ -47,7 +47,7 @@ function normalize_images_in_dir_mr(name_input_dir, name_output_dir, names_all,n
         
                info.Datatype = 'single';
         
-               niftigzwrite(single(im_out_norm), name_out, info);
+               niftigzwrite((im_out_norm), name_out, info);
         
                %%%%%%%%%%%%%%%%
                

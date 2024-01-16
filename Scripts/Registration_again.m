@@ -1,11 +1,10 @@
 function Registration_again(folder,subject_number,dofnumber, costfunction)
-poolobj = parpool(1);
 parfor i = 1:length(subject_number)
     tic
     nameIn = sprintf('%s/%s_nonorm_r1.nii.gz',folder,subject_number{i});
     nameRef = sprintf('%s/%s_nonorm_ct.nii.gz',folder,subject_number{i});
     nameMat = sprintf('%s/transform_matrix/%s_transform.nii.gz',folder,subject_number{i});
-    nameOut = sprintf('%s/%s_nonorm_r1.nii.gz',folder,subject_number{i});
+    nameOut = sprintf('%s/%s_nonorm_r1_new.nii.gz',folder,subject_number{i});
     refweight = sprintf('%s/%s_weighted_bone_mk.nii.gz',folder,subject_number{i});
     if ~exist(nameIn,'file')
         fprintf('\n ~exist %s \n',nameIn);
@@ -34,5 +33,4 @@ parfor i = 1:length(subject_number)
     disp('ct header copy completed');
     toc
 end 
-delete(poolobj);
 end

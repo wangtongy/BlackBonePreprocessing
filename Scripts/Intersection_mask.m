@@ -1,5 +1,5 @@
 function Intersection_mask(folder, folder_out, subject_list)
-poolobj = parpool(15);
+
 parfor i = 1:length(subject_list)
     ct_mk = sprintf('%s/%s_ct_mk.nii.gz',folder,subject_list{i});
     mr_mk = sprintf('%s/%s_r1_mk.nii.gz',folder,subject_list{i});
@@ -17,5 +17,5 @@ parfor i = 1:length(subject_list)
     new_mk = single(new_mk);
     niftigzwrite(new_mk,intersection_out,info);
 end
-delete(poolobj);
+
 end

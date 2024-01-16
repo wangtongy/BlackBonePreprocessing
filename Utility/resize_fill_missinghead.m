@@ -1,16 +1,16 @@
 %% 
 addpath('//tesla01.rad.wustl.edu/data/TongyaoW/BlackBoneProject/Matlab_NIFTI_IO');
 
-resize_name = '//tesla01.rad.wustl.edu/data/TongyaoW/BlackBoneProject/Data/3D_Dataset/CT_Dicom/037_dcm.nii.gz';
+resize_name = '//tesla01.rad.wustl.edu/data/TongyaoW/BlackBoneProject/Data/3D_Dataset/CT_Dicom/049_dcm.nii.gz';
 folder = '//tesla01.rad.wustl.edu/data/TongyaoW/BlackBoneProject/Data/3D_Dataset/CT_Dicom/before_resize';
 ct_SB_14 = niftiread(resize_name);
 ctinfo = niftiinfo(resize_name);
-% copyfile(resize_name,folder)
-ct_new = zeros(512,512,600);
+copyfile(resize_name,folder)
+ct_new = zeros(512,512,592);
 ct_new = single(ct_new);
 ct1new = ct_new;
-ct1new(1:413,:,:) = ct_SB_14(100:512,:,:);
-ct1new(414:512,:,:) = 0;
+ct1new(:,:,1:453) = ct_SB_14(:,:,140:592);
+ct1new(:,:,454:592) = 0;
 ctinfo.Datatype = 'single';
 niftigzwrite(ct1new,resize_name,ctinfo);
 

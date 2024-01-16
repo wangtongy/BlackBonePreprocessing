@@ -8,7 +8,7 @@ function get_levelset_mask(folder, subject_list,ext)
     for i = 1:length(subject_list)
         tic
         fprintf('\nStarting levelset\n');
-        name_in = sprintf('%s/%s_%s.nii.gz',folder,subject_list{i},ext);
+        name_in = sprintf('%s/%s_nonorm_%s.nii.gz',folder,subject_list{i},ext);
         name_mk = sprintf('%s/%s_%s_mk.nii.gz',folder,subject_list{i},ext);
         if ~exist(name_in,'file')
             continue 
