@@ -1,10 +1,10 @@
 function Registration(folder,subject_number,dofnumber, costfunction)
 parfor i = 1:length(subject_number)
     tic
-    nameIn = sprintf('%s/%s_correction_MR.nii.gz',folder,subject_number{i});
+    nameIn = sprintf('%s/%s_qt.nii.gz',folder,subject_number{i});
     nameRef = sprintf('%s/%s_nonorm_ct.nii.gz',folder,subject_number{i});
     nameMat = sprintf('%s/transform_matrix/%s_transform.nii.gz',folder,subject_number{i});
-    nameOut = sprintf('%s/%s_nonorm_r1.nii.gz',folder,subject_number{i});
+    nameOut = sprintf('%s/%s_reg_qt.nii.gz',folder,subject_number{i});
     refweight = sprintf('%s/%s_weighted_bone_mk.nii.gz',folder,subject_number{i});
     if ~exist(nameIn,'file')
         fprintf('\n ~exist %s \n',nameIn);

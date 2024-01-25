@@ -16,7 +16,7 @@ function  keep_only_largest_region(folder, subject_list,ext)
         if length(dim_mk) == 2
           mk_labeled = bwlabel(mk_in);
         else
-          mk_labeled = bwlabeln(mk_in);
+          mk_labeled = bwlabeln(mk_in,18);
         end
     
         num_regions = max(mk_labeled(:));

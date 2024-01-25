@@ -12,14 +12,16 @@ slices = size(I,3);
 Row = size(I,1);
 Column = size(I,2);
 % Get the Dicom header information from each of the Dicom files in RSB-038
+
 instanceNumbers = zeros(slices,1);
 for k = 1:slices
     info(k) = dicominfo(a(1).name);
-    instanceNumbers(k) = info(k).InstanceNumber;    
+    info(k).InstanceNumber = k;
+%     instanceNumbers(k) = k;    
 end
 
-[~,sortingInd] = sort(instanceNumbers);
-info = info(sortingInd);
+% [~,sortingInd] = sort(instanceNumbers);
+% info = info(sortingInd);
 
 cd(NIFTI_path);
 I_f= flip(I,2);
