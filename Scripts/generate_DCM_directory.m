@@ -59,6 +59,11 @@ if pointer == 0
     end
 
 elseif pointer == 1
-    final_path =fullfile(Top_level_folder,'fl3d_vibe_GA_6-400');
+    folder_name = 'fl3d_vibe_GA_6-400Corr';
+    final_path =fullfile(Top_level_folder,folder_name);
+    if ~exist(final_path,'dir')
+        folder_name = 'fl3d_vibe_GA_6-400Unc';
+        final_path = fullfile(Top_level_folder,folder_name);
+    end
 end
 end
