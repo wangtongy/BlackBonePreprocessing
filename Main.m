@@ -5,8 +5,8 @@ Center_folder = '/data/anlab/TongyaoW/BlackBoneProject/Data/3D_Dataset/Pre_Data'
 Dcm_mr_Folder = '/data/anlab/TongyaoW/BlackBoneProject/Data/3D_Dataset/MRI_Dicom';
 final_folder = '/data/anlab/TongyaoW/BlackBoneProject/Data/3D_Dataset/Normalized';
 addpath(genpath('/data/anlab/TongyaoW/BlackBoneProject/Preprocessing/'));
-subject_number = load_names('/data/anlab/TongyaoW/BlackBoneProject/Data/ToAndrew/Training_testing_20231204.txt');
-subject_number_mr = load_names('/data/anlab/TongyaoW/BlackBoneProject/Data/3D_Dataset/move_header.txt');
+% subject_number = load_names('/data/anlab/TongyaoW/BlackBoneProject/Data/ToAndrew/Training_testing_20231204.txt');
+% subject_number_mr = load_names('/data/anlab/TongyaoW/BlackBoneProject/Data/3D_Dataset/move_header.txt');
 SB_049 = {'04'};
 %% Load CT dicom and generate nifti files (dicom folder structure for ct may change sometimes, In general, SB 1-63 shared one data structure, and the rest of them shared the other one,)
 % subject_number = {'056'};
