@@ -1,11 +1,11 @@
-function normalize_images_in_dir_mr(name_input_dir, name_output_dir, names_all,name_ext,param)
+function normalize_images_in_dir_mr(name_input_dir, name_output_dir, names_all,inext,outext,param,skip)
 
         for i=1:length(names_all),
                nnn = names_all{i};
                
-               name_in = sprintf('%s/%s_correction_MR.nii.gz', name_input_dir, nnn);
+               name_in = sprintf('%s/%s_%s.nii.gz', name_input_dir, nnn,inext);
                name_mk = sprintf('%s/%s_r1_mk.nii.gz', name_input_dir, nnn);
-               name_out = sprintf('%s/%s_%s.nii.gz', name_output_dir, nnn, name_ext);
+               name_out = sprintf('%s/%s_%s.nii.gz', name_output_dir, nnn, outext);
                if ~exist(name_mk,'file')
                    disp('no mask');
                    continue
@@ -14,9 +14,13 @@ function normalize_images_in_dir_mr(name_input_dir, name_output_dir, names_all,n
                    fprintf('\n missing: %s \n',name_in)
                    continue 
                end
-               if exist(name_out,'file')
-                   continue
+               if skip
+                    if exist(name_out,'file')
+                        fprintf('exist files %s \n',name_out);
+                        continue
+                    end
                end
+
                nii = niftiread(name_in);
                mk = single(niftiread(name_mk)); 
               
