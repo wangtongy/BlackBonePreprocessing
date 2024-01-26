@@ -10,7 +10,11 @@ subject_number_mr = load_names('/data/anlab/TongyaoW/BlackBoneProject/Data/3D_Da
 SB_049 = {'04'};
 %% Load CT dicom and generate nifti files (dicom folder structure for ct may change sometimes, In general, SB 1-63 shared one data structure, and the rest of them shared the other one,)
 % subject_number = {'056'};
+<<<<<<< HEAD
 dcm2nii(Dcm_ct_Folder,SB_049,0);
+=======
+dcm2nii(Dcm_ct_Folder,{'028'},0);
+>>>>>>> origin/master
 %% iNTERPOLATION CT
 Interpolation(Dcm_ct_Folder,Center_folder,SB_049);
 %% Generate head mask and only get the largest part (to get rid of the ct holder in the bakground)

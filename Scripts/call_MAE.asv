@@ -1,19 +1,5 @@
 
 path = '/data/anlab/TongyaoW/BlackBoneProject/Data/3D_Dataset/WH';
-<<<<<<< HEAD
-validation_2 = load_names(sprintf('%s/validation_g2.txt',path));
-List1 = 50; 
-List2 = 51:10:401;
-List3 = 400:5:480;
-% List4 = 423:5:443;
-% List5 = 444:449;
-model_number = [List1,List2,List3];
-MAE_noedge_bone3 = zeros(length(model_number),7);
-for i = 1:length(model_number)
-    folder_ct = sprintf('%s/ModelD_WH_patch_96_edge/validation_2',path);
-    folder_pct = sprintf('%s/ModelD_WH_patch_96_edge/validation_2/pCT/model_%d',path,model_number(i));
-    L2 = calculate_whole_head_MAE(folder_ct,folder_pct,validation_2,'edge_ct','qt');
-=======
 validation_1 = load_names(sprintf('%s/validation_g3.txt',path));
 List2 = 101:10:421;
 List3 = 430:5:500;
@@ -24,8 +10,7 @@ MAE_noedge_bone3 = zeros(length(model_number),8);
 for i = 1:length(model_number)
     folder_ct = sprintf('%s/ModelD_WH_patch_96_edge/validation_3',path);
     folder_pct = sprintf('%s/ModelD_WH_patch_96_edge/validation_3/pCT/model_%d',path,model_number(i));
-    L2 = calculate_whole_head_MAE(folder_ct,folder_pct,validation_1,'edge_ct','qt');
->>>>>>> origin/master
+    L2 = calculate_bone_MAE(folder_ct,folder_pct,validation_1,'edge_ct','qt');
     MAE_noedge_bone3(i,:) = L2;
 end
 

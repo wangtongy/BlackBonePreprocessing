@@ -32,27 +32,28 @@ if pointer == 0
     end
     listOfFolderNames = [listOfFolderNames singleSubFolder]; 
     end
-    
-    if strcmp(f_name, 'DICOM') == 0
-        TF = contains(listOfFolderNames,'DICOM');
-        index = find(TF==1);
-        TFnew = index(end);
-        final_folder = listOfFolderNames(TFnew);
-        final_folder = final_folder{end};
-        slashNumber = find(listOfFolderNames{end} == '/');
-
-        if strcmp(final_folder(1:slashNumber(end)-1),'scans')==1
-            final_folder_name = listOfFolderNames{end};
-            path = dir(final_folder_name);
-            new_path = path(3).name;
-            all_path = genpath(fullfile(final_folder_name,new_path,'DICOM'));
-            slash_colon = find(all_path == ':');
-            final_half = all_path(slash_colon(end-1)+1:slash_colon(end)-1);
-            final_path = fullfile(Top_level_folder,f_name,final_half);
-        else
-            final_path = fullfile(Top_level_folder,f_name,final_folder);
-        end
-    else
+    new_list = {};
+    for i = 1:length(listOfFolderNames)
+        if contains(listOfFolderNames{i},'DICOM') == 1
+            new_list{end+1} = listOfFolderNames{i};
+        else 
+            continue
+        end 
+    end
+    % new_list empty means no snapshots
+    if isempty(new_list) && strcmp(f_name,'DICOM') == 0
+        final_folder_name = listOfFolderNames{end};
+        path = dir(final_folder_name);
+        new_path = path(3).name;
+        all_path = genpath(fullfile(final_folder_name,new_path,'DICOM'));
+        slash_colon = find(all_path == ':');
+        final_half = all_path(slash_colon(end-1)+1:slash_colon(end)-1);
+        final_path = fullfile(Top_level_folder,f_name,final_half);
+   
+    elseif ~isempty(new_list)
+        final_folder = new_list{end};
+        final_path = fullfile(Top_level_folder,f_name,final_folder);
+    elseif isempty(new_list) && strcmp(f_name,'DICOM') == 1
         final_folder = listOfFolderNames{end};
         final_path = fullfile(Top_level_folder,f_name,final_folder);
     end

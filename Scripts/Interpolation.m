@@ -5,7 +5,11 @@ function Interpolation(Input_folder,out, subject_list)
         disp('have Test_tmp.nii.gz')
     else
         disp('No Template, generating a new one')
+<<<<<<< HEAD
         fslcreate = sprintf('fslcreatehd %d %d %d 1 0.3 0.3 0.5 1 0 0 0 4 TEST_tmp.img',720,722,393);
+=======
+        fslcreate = sprintf('fslcreatehd 720 722 393 1 0.3 0.3 0.5 1 0 0 0 4 TEST_tmp.img');
+>>>>>>> origin/master
         system(fslcreate);
     end
 
@@ -24,5 +28,9 @@ function Interpolation(Input_folder,out, subject_list)
         info = niftiinfo(nameIn);
         info.ImageSize = [720,722,393];    
     end
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/master
 end
